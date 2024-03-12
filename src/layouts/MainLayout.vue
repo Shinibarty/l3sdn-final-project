@@ -10,11 +10,9 @@
 
     <q-page-container>
       <router-view />
-      <ConnexionForm />
     </q-page-container>
   </q-layout>
 </template>
 
 <script setup>
-import ConnexionForm from 'src/components/ConnexionForm.vue'
 </script>
