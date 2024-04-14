@@ -1,5 +1,68 @@
 <template>
-  <div>Dashboard</div>
+  <q-page padding class="flex flex-center justify-center" style="height: calc(100vh - 50px)">
+    <div class="q-gutter-md" style="max-width: 1200px">
+      <div class="row">
+        <div class="col-xs-12 col-md-6 q-pa-md">
+          <q-card class="my-card flex flex-center">
+            <q-card-section> Nombre de managés : {{ userProfile.nbManaged }} </q-card-section>
+          </q-card>
+        </div>
+
+        <div class="col-xs-12 col-md-6 q-pa-md">
+          <q-card class="my-card flex flex-center">
+            <q-card-section> Prochain entretien : {{ userProfile.nextMeet }} </q-card-section>
+          </q-card>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12 col-md-6 q-pa-md">
+          <q-card class="my-card flex flex-center">
+            <q-card-section> Mon manager : {{ userProfile.Manager }} </q-card-section>
+          </q-card>
+        </div>
+
+        <div class="col-xs-12 col-md-6 q-pa-md">
+          <q-card class="my-card flex flex-center">
+            <q-card-section>
+              Mon prochain entretien personnel : {{ userProfile.persoMeet }}</q-card-section
+            >
+          </q-card>
+        </div>
+      </div>
+    </div>
+  </q-page>
 </template>
 
-<script setup></script>
+<style scoped>
+.q-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.my-card {
+  height: 150px;
+  min-width: 500px;
+}
+</style>
+
+<script setup>
+import { ref, onMounted } from 'vue'
+import { useAuthStore } from 'src/stores/auth'
+import users from '../../public/users.json'
+
+const authStore = useAuthStore()
+
+onMounted(() => {
+  authStore.checkAuth()
+})
+
+const userProfile = ref(null)
+
+if (authStore.isAuthenticated && authStore.user) {
+  const user = users.find((u) => u.id === authStore.user.id)
+  if (user) {
+    userProfile.value = user
+  }
+}
+</script>

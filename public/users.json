@@ -5,7 +5,11 @@
     "password": "mdp1",
     "firstName": "homme",
     "lastName": "nul",
-    "role": "employé"
+    "role": "employé",
+    "nbManaged": 3,
+    "nextMeet": "2024-01-01",
+    "Manager": "Mehdi",
+    "persoMeet": "2024-01-01"
   },
   {
     "id": 2,
@@ -13,7 +17,11 @@
     "password": "mdp1",
     "firstName": "Stievenard",
     "lastName": "Alban",
-    "role": "manager"
+    "role": "manager",
+    "nbManaged": 4,
+    "nextMeet": "2024-01-01",
+    "Manager": "Mehdi",
+    "persoMeet": "2024-01-01"
   },
   {
     "id": 3,
@@ -21,7 +29,11 @@
     "password": "mdp1",
     "firstName": "Trari",
     "lastName": "Mehdi",
-    "role": "RH"
+    "role": "RH",
+    "nbManaged": 50,
+    "nextMeet": "2024-01-01",
+    "Manager": "Alban",
+    "persoMeet": "2024-01-01"
   },
   {
     "id": 4,
@@ -29,6 +41,10 @@
     "password": "t",
     "firstName": "Trari",
     "lastName": "Mehdi",
-    "role": "RH"
+    "role": "RH",
+    "nbManaged": 50,
+    "nextMeet": "2024-01-01",
+    "Manager": "Alban",
+    "persoMeet": "2024-01-01"
   }
 ]

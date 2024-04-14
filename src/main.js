@@ -13,4 +13,3 @@ const authStore = useAuthStore()
 authStore.checkAuth()
 
 app.mount('#app')
-console.log('main.js')

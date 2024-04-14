@@ -38,7 +38,7 @@ const authStore = useAuthStore()
 const onSubmit = () => {
   const user = users.find((user) => user.email === email.value && user.password === password.value)
   if (user) {
-    authStore.logIn()
+    authStore.logIn(user)
     console.log('connected')
     router.push('/')
   } else {
