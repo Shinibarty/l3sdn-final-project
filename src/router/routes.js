@@ -1,7 +1,7 @@
-import Login from 'src/components/LoginForm.vue'
-import MainLayout from 'src/layouts/MainLayout.vue'
-import IndexPage from 'src/pages/IndexPage.vue'
-import ErrorNotFound from 'src/pages/ErrorNotFound.vue'
+import Login from '../components/LoginForm.vue'
+import MainLayout from '../layouts/MainLayout.vue'
+import IndexPage from '../pages/IndexPage.vue'
+import ErrorNotFound from '../pages/ErrorNotFound.vue'
 
 const routes = [
   {

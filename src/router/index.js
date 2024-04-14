@@ -6,7 +6,6 @@ import {
   createWebHashHistory
 } from 'vue-router'
 import routes from './routes'
-import { useAuthStore } from 'src/stores/auth'
 
 export default route(function ({ store, ssrContext }) {
   const createHistory = process.env.SERVER
@@ -22,9 +21,11 @@ export default route(function ({ store, ssrContext }) {
   })
 
   Router.beforeEach((to, from, next) => {
-    const authStore = useAuthStore(store)
+    const isAuthenticated = localStorage.getItem('isAuthenticated') === 'true'
 
-    if (to.matched.some((record) => record.meta.requiresAuth) && !authStore.isAuthenticated) {
+    console.log('isAuthenticated', isAuthenticated)
+
+    if (to.matched.some((record) => record.meta.requiresAuth) && !isAuthenticated) {
       next({ path: '/login' })
     } else {
       next()

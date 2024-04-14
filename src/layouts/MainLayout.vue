@@ -2,11 +2,10 @@
   <q-layout view="lHh Lpr lFf">
     <q-header elevated>
       <q-toolbar>
-        <q-toolbar-title>On t'RH</q-toolbar-title>
+        <q-btn v-if="isAuthenticated" flat icon="home" class="q-mr-md" @click="goToHome" />
+        <q-btn v-if="isAuthenticated" flat icon="logout" class="q-mr-md" @click="logOut" />
 
-        <q-btn v-if="isAuthenticated" flat label="Home" class="q-ml-md on-left" @click="goToHome" />
-
-        <q-btn v-if="isAuthenticated" flat label="Logout" class="q-ml-md" @click="logOut" />
+        <q-toolbar-title class="text-center flex-auto"> On t'RH </q-toolbar-title>
 
         <div class="text-right">Mehdi Trari & Alban Stievenard</div>
       </q-toolbar>
@@ -26,12 +25,6 @@ import { computed } from 'vue'
 const router = useRouter()
 const authStore = useAuthStore()
 const isAuthenticated = computed(() => authStore.isAuthenticated)
-
-console.log(isAuthenticated)
-
-function goToLogin() {
-  router.push('/login')
-}
 
 function logOut() {
   authStore.logOut()
