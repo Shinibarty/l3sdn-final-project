@@ -1,17 +1,24 @@
+import Login from 'src/components/LoginForm.vue'
+import MainLayout from 'src/layouts/MainLayout.vue'
+import IndexPage from 'src/pages/IndexPage.vue'
+import ErrorNotFound from 'src/pages/ErrorNotFound.vue'
 
 const routes = [
   {
     path: '/',
-    component: () => import('layouts/MainLayout.vue'),
+    component: MainLayout,
+    meta: { requiresAuth: false },
     children: [
-      { path: '', component: () => import('pages/IndexPage.vue') },
-    ]
-  },
-  {
-    path: '/',
-    component: () => import('layouts/MainLayout.vue'),
-    children: [
-      { path: 'login', component: () => import('components/ConnexionForm.vue') },
+      {
+        path: '',
+        component: IndexPage,
+        meta: { requiresAuth: true }
+      },
+      {
+        path: '/login',
+        component: Login,
+        meta: { requiresAuth: false }
+      }
     ]
   },
 
@@ -19,7 +26,7 @@ const routes = [
   // but you can also remove it
   {
     path: '/:catchAll(.*)*',
-    component: () => import('pages/ErrorNotFound.vue')
+    component: ErrorNotFound
   }
 ]
 

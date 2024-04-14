@@ -15,16 +15,17 @@
 
       <div v-if="errorMessage" class="q-pa-md text-negative">{{ errorMessage }}</div>
 
-      <div class="text-center">
-        <q-btn label="Connexion" type="submit" color="primary" />
+      <div class="text-center q-pa-md">
+        <q-btn label="Connexion" type="submit" color="primary" style="width: 100%" />
       </div>
     </q-form>
   </div>
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 import { useRouter } from 'vue-router'
+import { useAuthStore } from 'src/stores/auth'
 import users from '../../public/users.json'
 
 const email = ref('')
@@ -32,13 +33,22 @@ const password = ref('')
 const errorMessage = ref('')
 
 const router = useRouter()
+const authStore = useAuthStore()
 
 const onSubmit = () => {
-  const user = users.find(user => user.email === email.value && user.password === password.value)
+  const user = users.find((user) => user.email === email.value && user.password === password.value)
   if (user) {
-    router.push('/') // Redirection en cas de succès
+    authStore.logIn()
+    console.log('connected')
+    router.push('/')
   } else {
-    errorMessage.value = 'Le mail et/ou le mot de passe n\'est pas bon' // Définir le message d'erreur
+    errorMessage.value = "Le mail et/ou le mot de passe n'est pas bon"
   }
+}
+
+const onReset = () => {
+  email.value = ''
+  password.value = ''
+  errorMessage.value = ''
 }
 </script>
