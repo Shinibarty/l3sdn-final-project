@@ -1,3 +1,3 @@
 <template>
-    <div>interviews</div>
+    <div>entretiens</div>
 </template>

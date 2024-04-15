@@ -27,7 +27,7 @@ const routes = [
         meta: { requiresAuth: true }
       },
       {
-        path: '/interviews',
+        path: '/entretiens',
         component: Interviews,
         meta: { requiresAuth: true }
       }

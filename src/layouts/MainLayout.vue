@@ -59,7 +59,7 @@ function goToManages() {
 }
 
 function goToInterviews() {
-  router.push('/interviews')
+  router.push('/entretiens')
 }
 
 </script>
