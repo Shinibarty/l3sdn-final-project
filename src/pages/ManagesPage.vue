@@ -32,24 +32,45 @@
     </style>
 
 <script setup>
-import { ref, onMounted } from 'vue'
+import { computed } from 'vue'
 import { useAuthStore } from 'src/stores/auth'
 import users from '../../public/users.json'
 
 const authStore = useAuthStore()
 
-onMounted(() => {
-  authStore.checkAuth()
+const userInfo = computed(() => {
+  return users.find(user => user.id === authStore.user.id)
 })
 
-const userProfile = ref(null)
+const filteredUsers = computed(() => {
+  if (!userInfo.value) return []
 
-if (authStore.isAuthenticated && authStore.user) {
-  const user = users.find((u) => u.id === authStore.user.id)
-  if (user) {
-    userProfile.value = user
+  if (userInfo.value.role === 'manager') {
+    return users.filter(user => userInfo.value.ListeNmoins1.includes(user.idEmploye))
   }
-}
+
+  if (userInfo.value.role === 'RH') {
+    const managers = users.filter(user => userInfo.value.ListeManager.includes(user.idManager))
+
+    const employeesOfManagers = managers.flatMap(manager =>
+      users.filter(user => manager.ListeNmoins1.includes(user.idEmploye))
+    )
+
+    return [...managers, ...employeesOfManagers]
+  }
+
+  return []
+})
+
+const rows = computed(() => {
+  return filteredUsers.value.map(user => ({
+    name: user.firstName + ' ' + user.lastName + ' (' + user.job + ')',
+    email: user.email,
+    age: user.age,
+    role: user.role 
+  }))
+})
+
 const columns = [
     { name: 'name', required: true, label: 'Name (Job Title)', align: 'left', field: 'name', sortable: true },
     { name: 'email', required: true, label: 'Email', align: 'left', field: 'email', sortable: true },
@@ -62,13 +83,4 @@ const columns = [
     sortable: false,
   }
 ]
-
-const rows = users.map(user => ({
-    name: user.firstName + ' ' + user.lastName + ' (' + user.job + ')',
-    email: user.email,
-    age: user.age,
-    role: user.role 
-}))
-
-
 </script>
