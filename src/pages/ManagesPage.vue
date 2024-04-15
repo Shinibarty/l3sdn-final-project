@@ -1,7 +1,7 @@
 <template>
     <div class="q-pa-md container">
       <q-table
-        title="Information Manager"
+        title="Liste de Management"
         :rows="rows"
         :columns="columns"
         row-key="name"

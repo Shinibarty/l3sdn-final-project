@@ -1,6 +1,7 @@
 <template>
   <q-page padding class="flex flex-center justify-center" style="height: calc(100vh - 50px)">
     <div class="q-gutter-md" style="max-width: 1200px">
+      <h2 class="text-center text-weight-bolder">Dashboard</h2>
       <div class="row">
         <div class="col-xs-12 col-md-6 q-pa-md">
           <q-card class="my-card flex flex-center">

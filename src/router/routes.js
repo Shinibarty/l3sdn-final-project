@@ -4,6 +4,7 @@ import IndexPage from '../pages/IndexPage.vue'
 import ErrorNotFound from '../pages/ErrorNotFound.vue'
 import Manages from '../pages/ManagesPage.vue'
 import Interviews from '../pages/InterviewsPage.vue'
+import Profil from '../pages/ProfilPage.vue'
 
 const routes = [
   {
@@ -29,6 +30,11 @@ const routes = [
       {
         path: '/entretiens',
         component: Interviews,
+        meta: { requiresAuth: true }
+      },
+      {
+        path: '/profil',
+        component: Profil,
         meta: { requiresAuth: true }
       }
     ]

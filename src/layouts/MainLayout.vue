@@ -23,8 +23,24 @@
 
         <q-btn v-if="isAuthenticated" flat icon="home" class="q-mr-md" @click="goToHome" />
         
-        <q-btn v-if="isAuthenticated" flat icon="logout" class="q-mr-md absolute-right" @click="logOut" />
+        <div>
+          <div>
+            <q-btn v-if="isAuthenticated" flat icon="account_circle" class="q-mr-md absolute-right">
 
+              <q-menu fit>
+                <q-list style="min-width: 100px">
+                  <q-item clickable @click="profil">
+                    <q-item-section>Mon profil</q-item-section>
+                  </q-item>
+                  <q-separator />
+                  <q-item clickable @click="logOut">
+                    <q-item-section>Deconnexion</q-item-section>
+                  </q-item>
+                </q-list>
+              </q-menu>
+            </q-btn>
+          </div>
+        </div>  
         <q-toolbar-title class="text-center flex-auto"> On t'RH </q-toolbar-title>
       </q-toolbar>
     </q-header>
@@ -60,6 +76,10 @@ function goToManages() {
 
 function goToInterviews() {
   router.push('/entretiens')
+}
+
+function profil() {
+  router.push('/profil')
 }
 
 </script>
