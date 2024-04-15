@@ -5,6 +5,8 @@
     "password": "mdp",
     "firstName": "Romain",
     "lastName": "Oddone",
+    "age": 20,
+    "job": "employé de vente",
     "role": "manager",
     "nbManaged": 3,
     "managerId": ""
@@ -15,6 +17,8 @@
     "password": "mdp",
     "firstName": "Alban",
     "lastName": "Stievenard",
+    "age": 20,
+    "job": "manager de vente",
     "role": "employe",
     "nbManaged": 0,
     "managerId": 1
@@ -22,12 +26,16 @@
   {
     "id": 3,
     "email": "trarimehdi59@gmail.com",
-    "password": "mdp",
-    "firstName": "Mehdi",
-    "lastName": "Trari",
-    "role": "employe",
+    "password": "mdp1",
+    "firstName": "Trari",
+    "lastName": "Mehdi",
+    "age": 20,
+    "job": "RH recrutement",
+    "role": "RH",
     "nbManaged": 0,
-    "managerId": ""
+    "nextMeet": "2024-01-01",
+    "Manager": "Alban",
+    "persoMeet": "2024-01-01"
   },
   {
     "id": 4,
@@ -35,6 +43,8 @@
     "password": "mdp",
     "firstName": "Charlotte",
     "lastName": "Testeuse",
+    "age": 20,
+    "job": "Directeur RH",
     "role": "RH",
     "nbManaged": 0,
     "managerId": "Romain"
