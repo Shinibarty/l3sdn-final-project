@@ -42,7 +42,7 @@ const onSubmit = () => {
     console.log('connected')
     router.push('/')
   } else {
-    errorMessage.value = "Le mail et/ou le mot de passe n'est pas bon"
+    errorMessage.value = 'Erreur : Le mail et/ou le mot de passe est incorrect'
   }
 }
 
