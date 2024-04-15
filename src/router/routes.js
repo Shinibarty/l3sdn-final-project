@@ -2,6 +2,8 @@ import Login from '../components/LoginForm.vue'
 import MainLayout from '../layouts/MainLayout.vue'
 import IndexPage from '../pages/IndexPage.vue'
 import ErrorNotFound from '../pages/ErrorNotFound.vue'
+import Manages from '../pages/ManagesPage.vue'
+import Interviews from '../pages/InterviewsPage.vue'
 
 const routes = [
   {
@@ -18,6 +20,16 @@ const routes = [
         path: '/login',
         component: Login,
         meta: { requiresAuth: false }
+      },
+      {
+        path: '/manages',
+        component: Manages,
+        meta: { requiresAuth: true }
+      },
+      {
+        path: '/interviews',
+        component: Interviews,
+        meta: { requiresAuth: true }
       }
     ]
   },
