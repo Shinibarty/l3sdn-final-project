@@ -7,9 +7,7 @@
     "lastName": "Oddone",
     "role": "manager",
     "nbManaged": 3,
-    "nextMeet": "2024-01-01",
-    "Manager": "",
-    "persoMeet": "2024-01-01"
+    "managerId": ""
   },
   {
     "id": 2,
@@ -19,9 +17,7 @@
     "lastName": "Stievenard",
     "role": "employe",
     "nbManaged": 0,
-    "nextMeet": "2024-01-01",
-    "Manager": "Romain",
-    "persoMeet": "2024-01-01"
+    "managerId": 1
   },
   {
     "id": 3,
@@ -31,9 +27,7 @@
     "lastName": "Trari",
     "role": "employe",
     "nbManaged": 0,
-    "nextMeet": "2024-01-01",
-    "Manager": "Romain",
-    "persoMeet": "2024-01-01"
+    "managerId": ""
   },
   {
     "id": 4,
@@ -43,8 +37,6 @@
     "lastName": "Testeuse",
     "role": "RH",
     "nbManaged": 0,
-    "nextMeet": "2024-01-01",
-    "Manager": "Romain",
-    "persoMeet": "2024-01-01"
+    "managerId": "Romain"
   }
 ]

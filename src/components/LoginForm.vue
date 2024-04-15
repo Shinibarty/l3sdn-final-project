@@ -23,7 +23,7 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
+import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { useAuthStore } from 'src/stores/auth'
 import users from '../../public/users.json'
@@ -37,6 +37,7 @@ const authStore = useAuthStore()
 
 const onSubmit = () => {
   const user = users.find((user) => user.email === email.value && user.password === password.value)
+
   if (user) {
     authStore.logIn(user)
     console.log('connected')
@@ -44,11 +45,5 @@ const onSubmit = () => {
   } else {
     errorMessage.value = 'Erreur : Le mail et/ou le mot de passe est incorrect'
   }
-}
-
-const onReset = () => {
-  email.value = ''
-  password.value = ''
-  errorMessage.value = ''
 }
 </script>
