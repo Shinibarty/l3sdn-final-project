@@ -8,8 +8,8 @@
             <q-card-section> Nombre de managés : {{ userProfile.nbManaged }} </q-card-section>
           </q-card>
         </div>
-
-        <div class="col-xs-12 col-md-6 q-pa-md">
+        
+        <div v-if="isManagerOrRH" class="col-xs-12 col-md-6 q-pa-md">
           <q-card class="my-card flex flex-center">
             <q-card-section> Prochain entretien : {{ userProfile.nextMeet }} </q-card-section>
           </q-card>
@@ -19,7 +19,7 @@
       <div class="row">
         <div class="col-xs-12 col-md-6 q-pa-md">
           <q-card class="my-card flex flex-center">
-            <q-card-section> Mon manager : {{ userProfile.Manager }} </q-card-section>
+            <q-card-section> Mon manager : {{ managerName }} </q-card-section>
           </q-card>
         </div>
 
@@ -48,7 +48,7 @@
 </style>
 
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, computed } from 'vue'
 import { useAuthStore } from 'src/stores/auth'
 import users from '../../public/users.json'
 
@@ -66,4 +66,20 @@ if (authStore.isAuthenticated && authStore.user) {
     userProfile.value = user
   }
 }
+
+const managerName = computed(() => {
+  if (userProfile.value) {
+    const managerId = userProfile.value.managerId
+    const manager = users.find((u) => u.id === managerId)
+    if (manager) {
+      return `${manager.firstName} ${manager.lastName}`
+    }
+  }
+  return ''
+})
+
+// Vérifier si l'utilisateur connecté est un manager ou un RH
+const isManagerOrRH = computed(() => {
+  return userProfile.value && (userProfile.value.role === 'manager' || userProfile.value.role === 'RH')
+})
 </script>
