@@ -13,12 +13,8 @@
         </q-td>
       </template>
     </q-table>
-<<<<<<< HEAD
   </div>
-</template>
-
-=======
-
+  <div>
     <q-dialog v-model="showDialog">
       <q-card class="my-edit">
         <h2 class="text-center">Profil</h2>
@@ -40,8 +36,6 @@
 </template>
 
 
-  
->>>>>>> 24c9321 (début du CRUD, plein de changements)
 <style scoped>
 .container {
   height: calc(100vh - 50px);
@@ -54,8 +48,6 @@
   width: 95vw;
   max-width: 100%;
 }
-<<<<<<< HEAD
-=======
 
 .my-edit {
   min-width: 500px;
@@ -70,7 +62,6 @@
 .styled-list li {
   margin-bottom: 0.5rem;
 }
->>>>>>> 24c9321 (début du CRUD, plein de changements)
 </style>
 
 <script setup>
@@ -79,60 +70,6 @@ import { useAuthStore } from 'src/stores/auth'
 import users from '../../public/users.json'
 
 const authStore = useAuthStore()
-<<<<<<< HEAD
-
-const userInfo = computed(() => {
-  return users.find((user) => user.id === authStore.user.id)
-})
-
-const filteredUsers = computed(() => {
-  if (!userInfo.value) return []
-
-  if (userInfo.value.role === 'manager') {
-    return users.filter((user) => userInfo.value.ListeNmoins1.includes(user.idEmploye))
-  }
-
-  if (userInfo.value.role === 'RH') {
-    const managers = users.filter((user) => userInfo.value.ListeManager.includes(user.idManager))
-
-    const employeesOfManagers = managers.flatMap((manager) =>
-      users.filter((user) => manager.ListeNmoins1.includes(user.idEmploye))
-    )
-
-    return [...managers, ...employeesOfManagers]
-  }
-
-  return []
-})
-
-const rows = computed(() => {
-  return filteredUsers.value.map((user) => ({
-    name: user.firstName + ' ' + user.lastName + ' (' + user.job + ')',
-    email: user.email,
-    age: user.age,
-    role: user.role
-  }))
-})
-
-const columns = [
-  {
-    name: 'name',
-    required: true,
-    label: 'Nom Prénom (Job)',
-    align: 'left',
-    field: 'name',
-    sortable: true
-  },
-  { name: 'email', required: true, label: 'Email', align: 'left', field: 'email', sortable: true },
-  { name: 'age', required: true, label: 'Âge', align: 'left', field: 'age', sortable: true },
-  { name: 'role', required: true, label: 'Rôle', align: 'left', field: 'role', sortable: true },
-  {
-    name: 'action',
-    label: 'Profil',
-    align: 'right',
-    sortable: false
-  }
-=======
 const showDialog = ref(false)
 const selectedUser = ref({})
 
@@ -154,20 +91,20 @@ function onProfileClick(row) {
 
 // Exemple avec fetch pour envoyer une requête de mise à jour
 function submitEdit() {
-  fetch('http://localhost:3000/api/users/' + selectedUser.value.id, {
-    method: 'PUT',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(selectedUser.value)
-  })
-  .then(response => response.json())
-  .then(updatedUser => {
-    console.log('User updated:', updatedUser)
-    showDialog.value = false
-    isEditing.value = false
-  })
-  .catch(error => console.error('Failed to update user:', error))
+//   fetch('http://localhost:3000/api/users/' + selectedUser.value.id, {
+//     method: 'PUT',
+//     headers: {
+//       'Content-Type': 'application/json',
+//     },
+//     body: JSON.stringify(selectedUser.value)
+//   })
+//   .then(response => response.json())
+//   .then(updatedUser => {
+//     console.log('User updated:', updatedUser)
+//     showDialog.value = false
+//     isEditing.value = false
+//   })
+//   .catch(error => console.error('Failed to update user:', error))
 }
 
 
@@ -192,6 +129,5 @@ const columns = [
   { name: 'age', label: 'Age', align: 'left', field: 'age', sortable: true },
   { name: 'role', label: 'Rôle', align: 'left', field: 'role', sortable: true },
   { name: 'action', label: 'Profil', align: 'right', sortable: false },
->>>>>>> 24c9321 (début du CRUD, plein de changements)
 ]
 </script>
