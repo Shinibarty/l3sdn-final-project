@@ -12,9 +12,11 @@
         <div v-if="isManagerOrRH" class="col-xs-12 col-md-6 q-pa-md">
           <q-card class="my-card flex flex-center">
             <q-card-section>
-              <b>Prochain entretien :</b> Le
+              <b>Prochain entretien :</b>
               {{
-                nextInterview ? `${nextInterview.date} avec ${nextInterview.employeeName}` : 'Aucun'
+                nextInterview
+                  ? `Le ${nextInterview.date} avec ${nextInterview.employeeName}`
+                  : 'Aucun'
               }}
             </q-card-section>
           </q-card>
@@ -31,10 +33,10 @@
         <div class="col-xs-12 col-md-6 q-pa-md">
           <q-card class="my-card flex flex-center">
             <q-card-section
-              ><b>Mon prochain entretien personnel :</b> Le
+              ><b>Mon prochain entretien personnel :</b>
               {{
                 nextPersonalInterview
-                  ? `${nextPersonalInterview.date} avec ${nextPersonalInterview.managerName}`
+                  ? `Le ${nextPersonalInterview.date} avec ${nextPersonalInterview.managerName}`
                   : 'Aucun'
               }}
             </q-card-section>
