@@ -21,8 +21,7 @@
     "age": 35,
     "job": "Directrice RH",
     "role": "RH",
-    "ListeNmoins1" : [],    
-    "idEmploye": 1,
+    "ListeManager" : [1],  
     "RhId": 2
   },
   {
@@ -35,7 +34,7 @@
     "job": "Employé de rayon",    
     "role": "employe",
     "ListeNmoins1" : [],
-    "idEmploye": 2,
+    "idEmploye": 1,
     "RhId": 2
   },
   {
@@ -48,7 +47,7 @@
     "job": "Secrétaire",    
     "role": "Employe",
     "ListeNmoins1" : [],
-    "idEmploye": 3,
+    "idEmploye": 2,
     "RhId": 2
   },
   {
@@ -61,7 +60,7 @@
     "job": "Employé de rayon",    
     "role": "employe",
     "ListeNmoins1" : [],
-    "idEmploye": 4,
+    "idEmploye": 3,
     "RhId": 2
   },
   {
@@ -74,7 +73,7 @@
     "job": "Employé de rayon",    
     "role": "employe",
     "ListeNmoins1" : [],
-    "idEmploye": 5,
+    "idEmploye": 4,
     "RhId": 2    
   },
   {
@@ -87,7 +86,7 @@
     "job": "Le goat de l'entreprise",
     "role": "employe",
     "ListeNmois1" : [],    
-    "idEmploye": 6,
+    "idEmploye": 5,
     "RhId" : 2
   },
   {
@@ -99,9 +98,8 @@
     "age": 67,
     "job": "Toplaner retraité",
     "role": "employe",
-    "ListeManager" : [1],
     "ListeNmoins1" : [],
-    "idEmploye": 7,    
+    "idEmploye": 6,    
     "RhId": 2
   },
   {
@@ -113,9 +111,8 @@
     "age": 22,
     "job": "Hôte de caisse",
     "role": "employe",
-    "ListeManager" : [1],
     "ListeNmoins1" : [],
-    "idEmploye": 8, 
+    "idEmploye": 7  , 
     "RhId": 2
   }
 ]

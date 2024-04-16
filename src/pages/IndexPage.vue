@@ -3,12 +3,12 @@
     <div class="q-gutter-md" style="max-width: 1200px">
       <h2 class="text-center text-weight-bolder">Dashboard</h2>
       <div class="row">
-        <div class="col-xs-12 col-md-6 q-pa-md">
+        <div v-if="isManagerOrRH" class="col-xs-12 col-md-6 q-pa-md">
           <q-card class="my-card flex flex-center">
             <q-card-section> Nombre de managés : {{ userProfile.nbManaged }} </q-card-section>
           </q-card>
         </div>
-        
+
         <div v-if="isManagerOrRH" class="col-xs-12 col-md-6 q-pa-md">
           <q-card class="my-card flex flex-center">
             <q-card-section> Prochain entretien : {{ userProfile.nextMeet }} </q-card-section>
@@ -80,6 +80,8 @@ const managerName = computed(() => {
 
 // Vérifier si l'utilisateur connecté est un manager ou un RH
 const isManagerOrRH = computed(() => {
-  return userProfile.value && (userProfile.value.role === 'manager' || userProfile.value.role === 'RH')
+  return (
+    userProfile.value && (userProfile.value.role === 'manager' || userProfile.value.role === 'RH')
+  )
 })
 </script>
