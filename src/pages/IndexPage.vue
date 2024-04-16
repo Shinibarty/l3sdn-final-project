@@ -30,7 +30,14 @@
 
         <div class="col-xs-12 col-md-6 q-pa-md">
           <q-card class="my-card flex flex-center">
-            <q-card-section><b>Mon prochain entretien personnel :</b> {{}}</q-card-section>
+            <q-card-section
+              ><b>Mon prochain entretien personnel :</b> Le
+              {{
+                nextPersonalInterview
+                  ? `${nextPersonalInterview.date} avec ${nextPersonalInterview.managerName}`
+                  : 'Aucun'
+              }}
+            </q-card-section>
           </q-card>
         </div>
       </div>
@@ -96,15 +103,13 @@ const managerName = computed(() => {
   return ''
 })
 
-// Calculer le prochain entretien à venir
+// Calculer le prochain entretien à venir où l'utilisateur connecté est le manager
 const nextInterview = computed(() => {
   if (userProfile.value) {
     const userId = userProfile.value.id
-    // Filtrer les entretiens associés à l'utilisateur connecté en tant que manager
     const userInterviews = interviews.filter(
       (interview) => interview.managerId === userId && interview.status === 'pending'
     )
-    // Trouver le prochain entretien à venir
     const nextInterview = userInterviews.reduce((prev, current) => {
       const prevDate = new Date(prev.date)
       const currentDate = new Date(current.date)
@@ -117,6 +122,29 @@ const nextInterview = computed(() => {
     }
 
     return nextInterview
+  }
+  return null
+})
+
+// Calculer le prochain entretien à venir où l'utilisateur connecté est l'employé
+const nextPersonalInterview = computed(() => {
+  if (userProfile.value) {
+    const userId = userProfile.value.id
+    const personalInterviews = interviews.filter(
+      (interview) => interview.employeeId === userId && interview.status === 'pending'
+    )
+    const nextPersonalInterview = personalInterviews.reduce((prev, current) => {
+      const prevDate = new Date(prev.date)
+      const currentDate = new Date(current.date)
+      return prevDate < currentDate ? prev : current
+    }, personalInterviews[0])
+
+    if (nextPersonalInterview) {
+      const manager = users.find((user) => user.id === nextPersonalInterview.managerId)
+      nextPersonalInterview.managerName = manager ? `${manager.firstName} ${manager.lastName}` : ''
+    }
+
+    return nextPersonalInterview
   }
   return null
 })

@@ -1,27 +1,27 @@
 [
     {
-    "id": 1,
-    "managerId": 1,
-    "employeeId": 2,
-    "date": "2024-01-15",
-    "notes": "Entretien de suivi trimestriel.",
-    "status": "completed"
+        "id": 1,
+        "managerId": 1,
+        "employeeId": 2,
+        "date": "2024-01-15",
+        "notes": "Entretien de suivi trimestriel.",
+        "status": "completed"
     },
     {
-    "id": 2,
-    "managerId": 1,
-    "employeeId": 3,
-    "date": "2024-02-10",
-    "notes": "Entretien d'évaluation annuelle.",
-    "status": "pending"
+        "id": 2,
+        "managerId": 1,
+        "employeeId": 3,
+        "date": "2024-02-10",
+        "notes": "Entretien d'évaluation annuelle.",
+        "status": "pending"
     },
     {
-    "id": 3,
-    "managerId": 1,
-    "employeeId": 2,
-    "date": "2024-03-20",
-    "notes": "Entretien de performance mensuel.",
-    "status": "pending"
+        "id": 3,
+        "managerId": 1,
+        "employeeId": 2,
+        "date": "2024-03-20",
+        "notes": "Entretien de performance mensuel.",
+        "status": "pending"
     },
     {
         "id": 4,
@@ -58,9 +58,9 @@
     {
         "id": 8,
         "managerId": 2,
-        "employeeId": 7,
+        "employeeId": 1,
         "date": "2024-04-16",
-        "notes": "Entretien d'évaluation semestriel.",
+        "notes": "Entretien entre RH et Manager.",
         "status": "pending"
     }    
 ]
