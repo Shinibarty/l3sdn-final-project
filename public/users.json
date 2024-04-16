@@ -1,6 +1,6 @@
 [
   {
-    "id": 1,    
+    "id": 1,
     "email": "romain@gmail.com",
     "password": "mdp",
     "firstName": "Romain",
@@ -33,13 +33,13 @@
     "phoneNumber": "06 15 94 94 10"
   },
   {
-    "id": 3,    
+    "id": 3,
     "email": "loic@gmail.com",
     "password": "mdp",
     "firstName": "Loïc",
     "lastName": "Martin",
     "age": 40,
-    "job": "Employé de rayon",    
+    "job": "Employé de rayon",
     "role": "Employé",
     "ListeNmoins1": [],
     "idEmploye": 1,
@@ -55,13 +55,13 @@
 >>>>>>> 24c9321 (début du CRUD, plein de changements)
   },
   {
-    "id": 4,    
+    "id": 4,
     "email": "sophie@gmail.com",
     "password": "mdp",
     "firstName": "Sophie",
     "lastName": "Lemaire",
     "age": 30,
-    "job": "Secrétaire",    
+    "job": "Secrétaire",
     "role": "Employé",
     "ListeNmoins1": [],
     "idEmploye": 2,
@@ -77,13 +77,13 @@
 >>>>>>> 24c9321 (début du CRUD, plein de changements)
   },
   {
-    "id": 5,    
+    "id": 5,
     "email": "guillaume@gmail.com",
     "password": "mdp",
     "firstName": "Guillaume",
     "lastName": "Petit",
     "age": 45,
-    "job": "Employé de rayon",    
+    "job": "Employé de rayon",
     "role": "Employé",
     "ListeNmoins1": [],
     "idEmploye": 3,
@@ -99,13 +99,13 @@
 >>>>>>> 24c9321 (début du CRUD, plein de changements)
   },
   {
-    "id": 6,    
+    "id": 6,
     "email": "claire@gmail.com",
     "password": "mdp",
     "firstName": "Claire",
     "lastName": "Garnier",
     "age": 28,
-    "job": "Employé de rayon",    
+    "job": "Employé de rayon",
     "role": "Employé",
     "ListeNmoins1": [],
     "idEmploye": 4,
@@ -121,7 +121,7 @@
 >>>>>>> 24c9321 (début du CRUD, plein de changements)
   },
   {
-    "id": 7,    
+    "id": 7,
     "email": "alban.stiev@gmail.com",
     "password": "mdp",
     "firstName": "Alban",
@@ -159,7 +159,7 @@
 =======
     "role": "Employé",
     "ListeNmoins1": [],
-    "idEmploye": 6,    
+    "idEmploye": 6,
     "RhId": 2,
     "birthDate": "1953-04-16",
     "salary": 50000,
@@ -168,7 +168,7 @@
 >>>>>>> 24c9321 (début du CRUD, plein de changements)
   },
   {
-    "id": 9,    
+    "id": 9,
     "email": "charlotte@gmail.com",
     "password": "mdp",
     "firstName": "Charlotte",
