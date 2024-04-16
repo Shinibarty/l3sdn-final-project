@@ -14,11 +14,8 @@
 
         <q-card-section>
           <div><b>Email :</b> {{ userProfile.email }}</div>
-          <div><b>Age :</b> {{ userProfile.age }}</div>
-          <div><b>Role :</b> {{ userProfile.role }}</div>
-          <div v-if="userProfile.role === 'manager'">
-            <b>Nombre d'employés managés:</b> {{ userProfile.nbManaged }}
-          </div>
+          <div><b>Âge :</b> {{ userProfile.age }} ans</div>
+          <div><b>Rôle :</b> {{ userProfile.role }}</div>
         </q-card-section>
       </q-card>
     </div>
