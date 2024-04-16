@@ -4,22 +4,28 @@
       <h2 class="text-h5">Mes entretiens</h2>
       
       <!-- Affichage des onglets -->
-      <q-tabs v-model="selectedTab">
-        <q-tab name="interviewer">Entretiens réalisés</q-tab>
-        <q-tab name="interviewee">Entretiens en tant qu'interviewé</q-tab>
-      </q-tabs>
+      <div v-if="entretiensEnAttenteInterviewer.length === 0 && entretiensCompletesInterviewer.length === 0 &&  entretiensEnAttenteInterviewee.length === 0 && entretiensCompletesInterviewee.length === 0"
+      class="text-center q-mt-lg">
+      </div>
+      <div v-else>
+        <q-tabs v-model="selectedTab">
+        <q-tab v-if="isManagerOrRH" name="interviewer">Entretiens réalisés</q-tab>
+        <q-tab name="interviewee">Entretiens en tant qu'interviewé</q-tab>        
+        </q-tabs> 
+      </div>      
       
       <!-- Contenu des onglets -->
       <q-tab-panels v-model="selectedTab">
         <!-- Entretiens en tant qu'interviewer -->
         <q-tab-panel name="interviewer">
-          <!-- Entretiens en attente -->
+          <!-- S'il n'y en a pas-->
           <div v-if="entretiensEnAttenteInterviewer.length === 0 && entretiensCompletesInterviewer.length === 0" class="text-center q-mt-lg">
             Aucun entretien trouvé.
           </div>
-          <div>
-            <!-- Entretiens en attente -->
-            <h3 v-if="entretiensEnAttenteInterviewer.length > 0" class="text-h6">Entretiens en attente</h3>
+          <!-- S'il y en a -->
+            <div>
+            <!-- Entretiens en attente -->            
+            <h3 v-if="entretiensEnAttenteInterviewer.length > 0" class="text-h6">En attente</h3>
             <q-card v-for="entretien in entretiensEnAttenteInterviewer" :key="entretien.id" class="q-mb-md bg-blue-grey-3">
               <q-card-section>
                 <div class="row">
@@ -30,7 +36,7 @@
               </q-card-section>
             </q-card>
             <!-- Entretiens complétés-->
-            <h3 v-if="entretiensCompletesInterviewer.length > 0" class="text-h6 q-mt-md">Entretiens complétés</h3>
+            <h3 v-if="entretiensCompletesInterviewer.length > 0" class="text-h6 q-mt-md">Complétés</h3>
             <q-card v-for="entretien in entretiensCompletesInterviewer" :key="entretien.id" class="q-mb-md bg-light-green-5">
               <q-card-section>
                 <div class="row">
@@ -45,13 +51,14 @@
         
         <!-- Entretiens en tant qu'interviewé -->
         <q-tab-panel name="interviewee">
-          <!-- Entretiens en attente -->
+          <!-- S'il n'y en a pas-->
           <div v-if="entretiensEnAttenteInterviewee.length === 0 && entretiensCompletesInterviewee.length === 0" class="text-center q-mt-lg">
             Aucun entretien trouvé.
           </div>
+          <!-- S'il y en a -->
           <div>
             <!-- Entretiens en attente -->
-            <h3 v-if="entretiensEnAttenteInterviewee.length > 0" class="text-h6">Entretiens en attente</h3>
+            <h3 v-if="entretiensEnAttenteInterviewee.length > 0" class="text-h6">En attente</h3>
             <q-card v-for="entretien in entretiensEnAttenteInterviewee" :key="entretien.id" class="q-mb-md bg-blue-grey-3">
               <q-card-section>
                 <div class="row">
@@ -62,7 +69,7 @@
               </q-card-section>
             </q-card>
             <!-- Entretiens complétés-->
-            <h3 v-if="entretiensCompletesInterviewee.length > 0" class="text-h6 q-mt-md">Entretiens complétés</h3>
+            <h3 v-if="entretiensCompletesInterviewee.length > 0" class="text-h6 q-mt-md">Complétés</h3>
             <q-card v-for="entretien in entretiensCompletesInterviewee" :key="entretien.id" class="q-mb-md bg-light-green-5">
               <q-card-section>
                 <div class="row">
@@ -121,6 +128,10 @@ const getSecondPersonName = (entretien) => {
   return secondPerson ? `${secondPerson.firstName} ${secondPerson.lastName}` : 'Inconnu'
 }
 
-// Gérer les onglets
-const selectedTab = ref('interviewer')
+const isManagerOrRH = computed(() => {
+  const user = users.find(u => u.id === userId)
+  return user && (user.role === 'manager' || user.role === 'RH')
+})
+
+const selectedTab = ref('interviewee')
 </script>
