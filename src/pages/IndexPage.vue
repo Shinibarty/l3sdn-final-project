@@ -17,7 +17,7 @@
       </div>
 
       <div class="row">
-        <div class="col-xs-12 col-md-6 q-pa-md">
+        <div v-if="!isManagerOrRH" class="col-xs-12 col-md-6 q-pa-md">
           <q-card class="my-card flex flex-center">
             <q-card-section> Mon manager : {{ managerName }} </q-card-section>
           </q-card>
