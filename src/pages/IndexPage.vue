@@ -81,7 +81,6 @@ if (authStore.isAuthenticated && authStore.user) {
   }
 }
 
-// Vérifier si l'utilisateur connecté est un manager ou un RH
 const isManagerOrRH = computed(() => {
   return (
     userProfile.value && (userProfile.value.role === 'manager' || userProfile.value.role === 'RH')

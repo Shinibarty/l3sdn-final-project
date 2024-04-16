@@ -39,7 +39,7 @@
             </q-btn>
           </div>
         </div>
-        <q-toolbar-title class="text-center flex-auto">On t'RH</q-toolbar-title>
+        <q-toolbar-title class="text-center flex-auto" style="padding-right: 10%">On t'RH</q-toolbar-title>
       </q-toolbar>
     </q-header>
 

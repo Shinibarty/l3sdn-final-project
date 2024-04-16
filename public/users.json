@@ -8,9 +8,13 @@
     "age": 30,
     "job": "Professeur",
     "role": "manager",
-    "ListeNmoins1" : [1, 2, 3, 4, 5, 6],    
+    "ListeNmoins1": [1, 2, 3, 4, 5, 6],
     "idManager": 1,
-    "RhId": 2
+    "RhId": 2,
+    "birthDate": "1990-05-15",
+    "salary": 45000,
+    "address": "40 rue du test, 75001 Paris",
+    "phoneNumber": "06 15 94 94 09"
   },
   {
     "id": 2,
@@ -21,8 +25,12 @@
     "age": 35,
     "job": "Directrice RH",
     "role": "RH",
-    "ListeManager" : [1],  
-    "RhId": 2
+    "ListeManager": [1],
+    "RhId": 2,
+    "birthDate": "1985-08-20",
+    "salary": 55000,
+    "address": "40 rue du test, 75002 Paris",
+    "phoneNumber": "06 15 94 94 10"
   },
   {
     "id": 3,    
@@ -32,11 +40,19 @@
     "lastName": "Martin",
     "age": 40,
     "job": "Employé de rayon",    
-    "role": "employe",
-    "ListeNmoins1" : [],
+    "role": "Employé",
+    "ListeNmoins1": [],
     "idEmploye": 1,
+<<<<<<< HEAD
     "managerId": 1,
     "RhId": 2
+=======
+    "RhId": 2,
+    "birthDate": "1980-09-30",
+    "salary": 32000,
+    "address": "40 rue du test, 75003 Paris",
+    "phoneNumber": "06 15 94 94 11"
+>>>>>>> 24c9321 (début du CRUD, plein de changements)
   },
   {
     "id": 4,    
@@ -46,11 +62,19 @@
     "lastName": "Lemaire",
     "age": 30,
     "job": "Secrétaire",    
-    "role": "Employe",
-    "ListeNmoins1" : [],
+    "role": "Employé",
+    "ListeNmoins1": [],
     "idEmploye": 2,
+<<<<<<< HEAD
     "managerId": 1,
     "RhId": 2
+=======
+    "RhId": 2,
+    "birthDate": "1990-12-15",
+    "salary": 35000,
+    "address": "40 rue du test, 75004 Paris",
+    "phoneNumber": "06 15 94 94 12"
+>>>>>>> 24c9321 (début du CRUD, plein de changements)
   },
   {
     "id": 5,    
@@ -60,11 +84,19 @@
     "lastName": "Petit",
     "age": 45,
     "job": "Employé de rayon",    
-    "role": "employe",
-    "ListeNmoins1" : [],
+    "role": "Employé",
+    "ListeNmoins1": [],
     "idEmploye": 3,
+<<<<<<< HEAD
     "managerId": 1,
     "RhId": 2
+=======
+    "RhId": 2,
+    "birthDate": "1975-07-22",
+    "salary": 33000,
+    "address": "40 rue du test, 75005 Paris",
+    "phoneNumber": "06 15 94 94 13"
+>>>>>>> 24c9321 (début du CRUD, plein de changements)
   },
   {
     "id": 6,    
@@ -74,11 +106,19 @@
     "lastName": "Garnier",
     "age": 28,
     "job": "Employé de rayon",    
-    "role": "employe",
-    "ListeNmoins1" : [],
+    "role": "Employé",
+    "ListeNmoins1": [],
     "idEmploye": 4,
+<<<<<<< HEAD
     "managerId": 1,
     "RhId": 2    
+=======
+    "RhId": 2,
+    "birthDate": "1992-03-11",
+    "salary": 31000,
+    "address": "40 rue du test, 75006 Paris",
+    "phoneNumber": "06 15 94 94 14"
+>>>>>>> 24c9321 (début du CRUD, plein de changements)
   },
   {
     "id": 7,    
@@ -88,11 +128,19 @@
     "lastName": "Stievenard",
     "age": 21,
     "job": "Le goat de l'entreprise",
-    "role": "employe",
-    "ListeNmois1" : [],    
+    "role": "Employé",
+    "ListeNmoins1": [],
     "idEmploye": 5,
+<<<<<<< HEAD
     "managerId": 1,
     "RhId" : 2
+=======
+    "RhId": 2,
+    "birthDate": "1999-11-30",
+    "salary": 30000,
+    "address": "40 rue du test, 75007 Paris",
+    "phoneNumber": "06 15 94 94 15"
+>>>>>>> 24c9321 (début du CRUD, plein de changements)
   },
   {
     "id": 8,
@@ -102,11 +150,22 @@
     "lastName": "Mehdi",
     "age": 67,
     "job": "Toplaner retraité",
+<<<<<<< HEAD
     "role": "employe",
     "ListeNmoins1" : [],
     "idEmploye": 6,
     "managerId": 1,
     "RhId": 2
+=======
+    "role": "Employé",
+    "ListeNmoins1": [],
+    "idEmploye": 6,    
+    "RhId": 2,
+    "birthDate": "1953-04-16",
+    "salary": 50000,
+    "address": "40 rue du test, 75008 Paris",
+    "phoneNumber": "06 15 94 94 16"
+>>>>>>> 24c9321 (début du CRUD, plein de changements)
   },
   {
     "id": 9,    
@@ -116,10 +175,21 @@
     "lastName": "Testeuse",
     "age": 22,
     "job": "Hôte de caisse",
+<<<<<<< HEAD
     "role": "employe",
     "ListeNmoins1" : [],
     "idEmploye": 7,
     "managerId": 1,
     "RhId": 2
+=======
+    "role": "Employé",
+    "ListeNmoins1": [],
+    "idEmploye": 7,
+    "RhId": 2,
+    "birthDate": "1998-05-05",
+    "salary": 29000,
+    "address": "40 rue du test, 75009 Paris",
+    "phoneNumber": "06 15 94 94 17"
+>>>>>>> 24c9321 (début du CRUD, plein de changements)
   }
 ]
