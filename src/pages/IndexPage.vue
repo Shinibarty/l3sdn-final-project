@@ -5,13 +5,18 @@
       <div class="row">
         <div v-if="isManagerOrRH" class="col-xs-12 col-md-6 q-pa-md">
           <q-card class="my-card flex flex-center">
-            <q-card-section> Nombre de managés : {{ userProfile.nbManaged }} </q-card-section>
+            <q-card-section><b>Nombre de managés :</b> {{ userProfile.nbManaged }} </q-card-section>
           </q-card>
         </div>
 
         <div v-if="isManagerOrRH" class="col-xs-12 col-md-6 q-pa-md">
           <q-card class="my-card flex flex-center">
-            <q-card-section> Prochain entretien : {{ userProfile.nextMeet }} </q-card-section>
+            <q-card-section>
+              <b>Prochain entretien :</b> Le
+              {{
+                nextInterview ? `${nextInterview.date} avec ${nextInterview.employeeName}` : 'Aucun'
+              }}
+            </q-card-section>
           </q-card>
         </div>
       </div>
@@ -19,15 +24,13 @@
       <div class="row">
         <div v-if="!isManagerOrRH" class="col-xs-12 col-md-6 q-pa-md">
           <q-card class="my-card flex flex-center">
-            <q-card-section> Mon manager : {{ managerName }} </q-card-section>
+            <q-card-section><b>Mon manager :</b> {{ managerName }} </q-card-section>
           </q-card>
         </div>
 
         <div class="col-xs-12 col-md-6 q-pa-md">
           <q-card class="my-card flex flex-center">
-            <q-card-section>
-              Mon prochain entretien personnel : {{ userProfile.persoMeet }}</q-card-section
-            >
+            <q-card-section><b>Mon prochain entretien personnel :</b> {{}}</q-card-section>
           </q-card>
         </div>
       </div>
@@ -51,6 +54,7 @@
 import { ref, onMounted, computed } from 'vue'
 import { useAuthStore } from 'src/stores/auth'
 import users from '../../public/users.json'
+import interviews from '../../public/entretiens.json'
 
 const authStore = useAuthStore()
 
@@ -60,6 +64,7 @@ onMounted(() => {
 
 const userProfile = ref(null)
 
+// Récupérer le profil de l'utilisateur connecté
 if (authStore.isAuthenticated && authStore.user) {
   const user = users.find((u) => u.id === authStore.user.id)
   if (user) {
@@ -89,5 +94,30 @@ const managerName = computed(() => {
     return getManagerNameById(managerId)
   }
   return ''
+})
+
+// Calculer le prochain entretien à venir
+const nextInterview = computed(() => {
+  if (userProfile.value) {
+    const userId = userProfile.value.id
+    // Filtrer les entretiens associés à l'utilisateur connecté en tant que manager
+    const userInterviews = interviews.filter(
+      (interview) => interview.managerId === userId && interview.status === 'pending'
+    )
+    // Trouver le prochain entretien à venir
+    const nextInterview = userInterviews.reduce((prev, current) => {
+      const prevDate = new Date(prev.date)
+      const currentDate = new Date(current.date)
+      return prevDate < currentDate ? prev : current
+    }, userInterviews[0])
+
+    if (nextInterview) {
+      const employee = users.find((user) => user.id === nextInterview.employeeId)
+      nextInterview.employeeName = employee ? `${employee.firstName} ${employee.lastName}` : ''
+    }
+
+    return nextInterview
+  }
+  return null
 })
 </script>

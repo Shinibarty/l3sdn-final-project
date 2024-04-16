@@ -5,7 +5,6 @@
         <div class="q-pa-md">
           <div class="q-gutter-md">
             <q-btn v-if="isAuthenticated" flat icon="menu">
-
               <q-menu fit>
                 <q-list style="min-width: 100px">
                   <q-item clickable @click="goToManages">
@@ -19,14 +18,13 @@
               </q-menu>
             </q-btn>
           </div>
-        </div>        
+        </div>
 
         <q-btn v-if="isAuthenticated" flat icon="home" class="q-mr-md" @click="goToHome" />
-        
+
         <div>
           <div>
             <q-btn v-if="isAuthenticated" flat icon="account_circle" class="q-mr-md absolute-right">
-
               <q-menu fit>
                 <q-list style="min-width: 100px">
                   <q-item clickable @click="profil">
@@ -34,14 +32,14 @@
                   </q-item>
                   <q-separator />
                   <q-item clickable @click="logOut">
-                    <q-item-section>Deconnexion</q-item-section>
+                    <q-item-section>Déconnexion</q-item-section>
                   </q-item>
                 </q-list>
               </q-menu>
             </q-btn>
           </div>
-        </div>  
-        <q-toolbar-title class="text-center flex-auto"> On t'RH </q-toolbar-title>
+        </div>
+        <q-toolbar-title class="text-center flex-auto">On t'RH</q-toolbar-title>
       </q-toolbar>
     </q-header>
 
@@ -81,5 +79,4 @@ function goToInterviews() {
 function profil() {
   router.push('/profil')
 }
-
 </script>
