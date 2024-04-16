@@ -20,6 +20,7 @@
           <q-card-section>
             <div class="row">
               <div class="col"><b>Date :</b> Le {{ entretien.date }}</div>
+              <div class="col"><b>Avec :</b> {{ getSecondPersonName(entretien) }}</div>
             </div>
             <div class="q-mt-sm"><b>Notes :</b> {{ entretien.notes }}</div>
           </q-card-section>
@@ -34,6 +35,7 @@
           <q-card-section>
             <div class="row">
               <div class="col"><b>Date :</b> Le {{ entretien.date }}</div>
+              <div class="col"><b>Avec :</b> {{ getSecondPersonName(entretien) }}</div>
             </div>
             <div class="q-mt-sm"><b>Notes :</b> {{ entretien.notes }}</div>
           </q-card-section>
@@ -47,6 +49,7 @@
 import { useAuthStore } from 'src/stores/auth'
 import { ref, computed } from 'vue'
 import entretiensData from '../../public/entretiens.json'
+import users from '../../public/users.json'
 
 const authStore = useAuthStore()
 const userId = authStore.user.id
@@ -58,7 +61,7 @@ const entretiensUtilisateur = entretiensData.filter(
 const entretiensEnAttente = ref([])
 const entretiensCompletes = ref([])
 
-// Séparer les entretiens en attente et complétés
+// Séparer les entretiens
 entretiensUtilisateur.forEach((entretien) => {
   if (entretien.status === 'completed') {
     entretiensCompletes.value.push(entretien)
@@ -66,4 +69,11 @@ entretiensUtilisateur.forEach((entretien) => {
     entretiensEnAttente.value.push(entretien)
   }
 })
+
+//Afficher le nom de l'autre personne présent à l'entretien
+const getSecondPersonName = (entretien) => {
+  const secondPersonId = entretien.managerId === userId ? entretien.employeeId : entretien.managerId
+  const secondPerson = users.find((user) => user.id === secondPersonId)
+  return secondPerson ? `${secondPerson.firstName} ${secondPerson.lastName}` : 'Inconnu'
+}
 </script>
