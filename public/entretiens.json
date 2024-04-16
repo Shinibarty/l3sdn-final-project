@@ -62,6 +62,14 @@
         "date": "2024-08-16",
         "notes": "Entretien entre RH et Manager.",
         "status": "pending"
-    }    
+    },
+    {
+        "id": 9,
+        "managerId": 2,
+        "employeeId": 1,
+        "date": "2024-08-16",
+        "notes": "Entretien fini interviewé test.",
+        "status": "completed"
+    }   
 ]
   
