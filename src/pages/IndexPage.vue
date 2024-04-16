@@ -4,9 +4,16 @@
       <h2 class="text-center text-weight-bolder">Dashboard</h2>
       <div class="row">
         <div v-if="isManagerOrRH" class="col-xs-12 col-md-6 q-pa-md">
-          <q-card class="my-card flex flex-center">
-            <q-card-section><b>Nombre de managés :</b> {{ userProfile.nbManaged }} </q-card-section>
-          </q-card>
+          <div v-if="isManager">
+            <q-card class="my-card flex flex-center">
+            <q-card-section><b>Nombre de managés :</b> {{ userProfile.ListeNmoins1.length }} </q-card-section>
+            </q-card>
+          </div>
+          <div v-if="isRH">
+            <q-card class="my-card flex flex-center">
+            <q-card-section><b>Nombre de managés :</b> {{ userProfile.ListeManager.length }} </q-card-section>
+            </q-card>
+          </div>          
         </div>
 
         <div v-if="isManagerOrRH" class="col-xs-12 col-md-6 q-pa-md">
@@ -86,6 +93,10 @@ const isManagerOrRH = computed(() => {
     userProfile.value && (userProfile.value.role === 'manager' || userProfile.value.role === 'RH')
   )
 })
+
+const isManager = computed(() => userProfile.value && userProfile.value.role === 'manager')
+
+const isRH = computed(() => userProfile.value && userProfile.value.role === 'RH')
 
 // Récupérer le nom du manager d'un utilisateur
 const getManagerNameById = (managerId) => {
