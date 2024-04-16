@@ -4,9 +4,17 @@
       title="Liste de Management"
       :rows="rows"
       :columns="columns"
+      :filter="filter"
       row-key="name"
       class="my-styled-table"
     >
+      <template v-slot:top-right>
+        <q-input  v-model="filter" borderless dense debounce="300" placeholder="Search">
+          <template v-slot:append>
+            <q-icon name="search" />
+          </template>
+        </q-input>
+      </template>
       <template v-slot:body-cell-action="props">
         <q-td :props="props">
           <q-btn flat icon="account_circle" @click="onProfileClick(props.row)" />
@@ -72,16 +80,29 @@ import users from '../../public/users.json'
 const authStore = useAuthStore()
 const showDialog = ref(false)
 const selectedUser = ref({})
+const filter = ref('')  
 
 const filteredUsers = computed(() => {
   const userInfo = users.find(user => user.id === authStore.user.id)
   if (!userInfo) return []
-  
-  return userInfo.role === 'manager'
-    ? users.filter(user => userInfo.ListeNmoins1.includes(user.idEmploye))
-    : userInfo.role === 'RH'
-    ? users.reduce((acc, user) => userInfo.ListeManager.includes(user.idManager) ? acc.concat(user) : acc, [])
-    : []
+
+  let result = []
+
+  if (userInfo.role === 'manager') {
+    result = users.filter(user => userInfo.ListeNmoins1.includes(user.idEmploye))
+  } else if (userInfo.role === 'RH') {
+    result = users.reduce((acc, user) => userInfo.ListeManager.includes(user.idManager) ? acc.concat(user) : acc, [])
+  }
+
+  if (filter.value) {
+    result = result.filter(user =>
+      user.firstName.toLowerCase().includes(filter.value.toLowerCase()) ||
+      user.lastName.toLowerCase().includes(filter.value.toLowerCase()) ||
+      user.email.toLowerCase().includes(filter.value.toLowerCase())
+    )
+  }
+
+  return result
 })
 
 function onProfileClick(row) {
@@ -89,27 +110,14 @@ function onProfileClick(row) {
   showDialog.value = true
 }
 
-// Exemple avec fetch pour envoyer une requête de mise à jour
 function submitEdit() {
-//   fetch('http://localhost:3000/api/users/' + selectedUser.value.id, {
-//     method: 'PUT',
-//     headers: {
-//       'Content-Type': 'application/json',
-//     },
-//     body: JSON.stringify(selectedUser.value)
-//   })
-//   .then(response => response.json())
-//   .then(updatedUser => {
-//     console.log('User updated:', updatedUser)
-//     showDialog.value = false
-//     isEditing.value = false
-//   })
-//   .catch(error => console.error('Failed to update user:', error))
+  //Rajouter la logique de PUT/PATCH une fois l'api donnée
 }
 
 
 function deleteUser() {
   showDialog.value = false
+  //Rajouter la logique de DELETE une fois l'api donnée
 }
 
 const rows = computed(() => filteredUsers.value.map(user => ({
@@ -130,4 +138,6 @@ const columns = [
   { name: 'role', label: 'Rôle', align: 'left', field: 'role', sortable: true },
   { name: 'action', label: 'Profil', align: 'right', sortable: false },
 ]
+
+
 </script>
