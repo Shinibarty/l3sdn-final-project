@@ -35,6 +35,7 @@
     "role": "employe",
     "ListeNmoins1" : [],
     "idEmploye": 1,
+    "managerId": 1,
     "RhId": 2
   },
   {
@@ -48,6 +49,7 @@
     "role": "Employe",
     "ListeNmoins1" : [],
     "idEmploye": 2,
+    "managerId": 1,
     "RhId": 2
   },
   {
@@ -61,6 +63,7 @@
     "role": "employe",
     "ListeNmoins1" : [],
     "idEmploye": 3,
+    "managerId": 1,
     "RhId": 2
   },
   {
@@ -74,6 +77,7 @@
     "role": "employe",
     "ListeNmoins1" : [],
     "idEmploye": 4,
+    "managerId": 1,
     "RhId": 2    
   },
   {
@@ -87,6 +91,7 @@
     "role": "employe",
     "ListeNmois1" : [],    
     "idEmploye": 5,
+    "managerId": 1,
     "RhId" : 2
   },
   {
@@ -99,7 +104,8 @@
     "job": "Toplaner retraité",
     "role": "employe",
     "ListeNmoins1" : [],
-    "idEmploye": 6,    
+    "idEmploye": 6,
+    "managerId": 1,
     "RhId": 2
   },
   {
@@ -112,7 +118,8 @@
     "job": "Hôte de caisse",
     "role": "employe",
     "ListeNmoins1" : [],
-    "idEmploye": 7  , 
+    "idEmploye": 7,
+    "managerId": 1,
     "RhId": 2
   }
 ]

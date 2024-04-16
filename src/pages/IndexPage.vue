@@ -67,21 +67,27 @@ if (authStore.isAuthenticated && authStore.user) {
   }
 }
 
-const managerName = computed(() => {
-  if (userProfile.value) {
-    const managerId = userProfile.value.managerId
-    const manager = users.find((u) => u.id === managerId)
-    if (manager) {
-      return `${manager.firstName} ${manager.lastName}`
-    }
-  }
-  return ''
-})
-
 // Vérifier si l'utilisateur connecté est un manager ou un RH
 const isManagerOrRH = computed(() => {
   return (
     userProfile.value && (userProfile.value.role === 'manager' || userProfile.value.role === 'RH')
   )
+})
+
+// Récupérer le nom du manager d'un utilisateur
+const getManagerNameById = (managerId) => {
+  const manager = users.find((user) => user.id === managerId)
+  if (manager) {
+    return `${manager.firstName} ${manager.lastName}`
+  }
+  return ''
+}
+
+const managerName = computed(() => {
+  if (userProfile.value) {
+    const managerId = userProfile.value.managerId
+    return getManagerNameById(managerId)
+  }
+  return ''
 })
 </script>
