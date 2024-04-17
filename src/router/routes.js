@@ -5,6 +5,7 @@ import ErrorNotFound from '../pages/ErrorNotFound.vue'
 import Manages from '../pages/ManagesPage.vue'
 import Interviews from '../pages/InterviewsPage.vue'
 import Profil from '../pages/ProfilPage.vue'
+import ErrorUnauthorized from '../pages/ErrorUnauthorized.vue'
 
 const routes = [
   {
@@ -18,14 +19,9 @@ const routes = [
         meta: { requiresAuth: true }
       },
       {
-        path: '/login',
-        component: Login,
-        meta: { requiresAuth: false }
-      },
-      {
         path: '/manages',
         component: Manages,
-        meta: { requiresAuth: true }
+        meta: { requiresAuth: true, requiredRoles: ['RH', 'manager'] }
       },
       {
         path: '/entretiens',
@@ -45,6 +41,15 @@ const routes = [
   {
     path: '/:catchAll(.*)*',
     component: ErrorNotFound
+  },
+  {
+    path: '/login',
+    component: Login,
+    meta: { requiresAuth: false, }
+  },
+  {
+    path: '/unauthorized',
+    component: ErrorUnauthorized
   }
 ]
 

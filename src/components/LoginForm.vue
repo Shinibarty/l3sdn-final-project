@@ -1,26 +1,39 @@
 <template>
-  <div class="q-pa-xl absolute-center shadow-2" style="min-width: 400px">
-    <div class="q-pa-md text-h4 text-weight-bolder text-center">Connexion</div>
+  <div class="login-background">
+    <div class="q-pa-xl absolute-center shadow-2" style="min-width: 400px; background-color: white; border-radius: 10% / 50%;">
+      <div class="q-pa-md text-h4 text-weight-bolder text-center">Connexion</div>
 
-    <q-form class="q-gutter-md" @submit.prevent="onSubmit" @reset="onReset">
-      <q-input v-model="email" filled label="Email" hint="Entrez votre mail" />
+      <q-form class="q-gutter-md" @submit.prevent="onSubmit">
+        <q-input v-model="email" filled label="Email" hint="Entrez votre mail" />
 
-      <q-input
-        v-model="password"
-        filled
-        type="password"
-        label="Password"
-        hint="Entrez votre mot de passe"
-      />
+        <q-input
+          v-model="password"
+          filled
+          type="password"
+          label="Password"
+          hint="Entrez votre mot de passe"
+        />
 
-      <div v-if="errorMessage" class="q-pa-md text-negative">{{ errorMessage }}</div>
+        <div v-if="errorMessage" class="q-pa-md text-negative">{{ errorMessage }}</div>
 
-      <div class="text-center q-pa-md">
-        <q-btn label="Connexion" type="submit" color="primary" style="width: 100%" />
-      </div>
-    </q-form>
+        <div class="text-center q-pa-md">
+          <q-btn label="Connexion" type="submit" color="primary" style="width: 100%" />
+        </div>
+      </q-form>
+    </div>
   </div>
 </template>
+
+<style scoped>
+
+.login-background {
+  background-image: url('../assets/loginScreen.png'); 
+  background-size: cover; 
+  background-position: center; 
+  height: 100vh; 
+}
+
+</style>
 
 <script setup>
 import { ref } from 'vue'
