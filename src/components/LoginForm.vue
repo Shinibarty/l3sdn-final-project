@@ -34,7 +34,7 @@
 
 .login-form {
   min-width: 400px;
-  background-color: white;
+  background-color: rgb(159, 79, 79);
   border-radius: 10% / 50%;
 }
 </style>
