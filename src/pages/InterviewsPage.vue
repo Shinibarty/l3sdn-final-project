@@ -133,8 +133,34 @@
         </q-tab-panel>
       </q-tab-panels>
     </q-page>
+    
+    <div class="my-desc">
+    <q-dialog v-model="showDetailsDialog" class="my-desc">
+      <q-card>
+        <q-card-section>
+          <div class="text-h6">Description</div>
+          <q-separator />
+          <div class="q-mt-md">
+            {{ selectedEntretien.description }}
+          </div>
+        </q-card-section>
+        <q-card-actions align="right">
+          <q-btn flat label="Fermer" @click="showDetailsDialog = false" />
+        </q-card-actions>
+      </q-card>
+    </q-dialog>
+  </div>
   </div>
 </template>
+
+<style scoped>
+
+.my-desc {
+  min-width: 200px;
+  min-height: 400px;
+}
+
+</style>
 
 <script setup>
 import { useAuthStore } from 'src/stores/auth'
@@ -144,6 +170,9 @@ import users from '../../public/users.json'
 
 const authStore = useAuthStore()
 const userId = authStore.user.id
+const showDetailsDialog = ref(false)
+const selectedEntretien = ref({})
+
 
 const entretiensUtilisateur = entretiensData.filter(
   (entretien) => entretien.managerId === userId || entretien.employeeId === userId
@@ -184,4 +213,9 @@ const isManagerOrRH = computed(() => {
 })
 
 const selectedTab = ref('interviewee')
+
+function openDetails(entretien) {
+  selectedEntretien.value = entretien
+  showDetailsDialog.value = true
+}
 </script>
