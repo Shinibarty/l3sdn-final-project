@@ -1,7 +1,6 @@
 <template>
   <q-page class="my-page">
     <div class="container q-pa-md" style="min-width: 400px">
-
       <div class="my-profil">
         <q-card class="q-mb-md">
           <q-card-section class="row items-center q-gutter-sm">
@@ -17,26 +16,28 @@
       <div class="my-information">
         <q-card class="q-pt-md q-pb-md">
           <q-card-section class="row items-center q-gutter-sm">
-
-          <q-avatar icon="book"/>
-          <div class="text-h6">Information</div>
+            <q-avatar icon="book" />
+            <div class="text-h6">Information</div>
           </q-card-section>
-          
+
           <q-separator />
 
           <q-form class="q-pa-md" @submit.prevent="submitEdit">
             <q-input v-model="userProfile.email" filled type="email" label="Email" />
-            <q-input  v-model="userProfile.birthDate" filled type="date" label="Date de naissance" />
-            <q-input  v-model="userProfile.role" filled type="option" label="Rôle" />
-            <q-input  v-model="userProfile.phoneNumber" filled type="tel" label="Numéro de téléphone" />
-            <q-input  v-model="userProfile.salary" filled label="Salaire" />
-            <q-input  v-model="userProfile.address" filled label="Adresse" />
+            <q-input v-model="userProfile.birthDate" filled type="date" label="Date de naissance" />
+            <q-input v-model="userProfile.role" filled type="option" label="Rôle" />
+            <q-input
+              v-model="userProfile.phoneNumber"
+              filled
+              type="tel"
+              label="Numéro de téléphone"
+            />
+            <q-input v-model="userProfile.salary" filled label="Salaire" />
+            <q-input v-model="userProfile.address" filled label="Adresse" />
             <div class="row justify-end q-pt-md">
-              <q-btn flat label="Delete" icon="delete" color="red" @click="deleteUser" />
               <q-btn flat label="Save" type="submit" color="positive" />
             </div>
           </q-form>
-
         </q-card>
       </div>
     </div>
@@ -65,27 +66,18 @@ onMounted(() => {
 function submitEdit() {
   //Rajouter la logique de PUT/PATCH une fois l'api donnée
 }
-
-
-function deleteUser() {
-  showDialog.value = false
-  //Rajouter la logique de DELETE une fois l'api donnée
-}
-
 </script>
 
 <style scoped>
-
 .my-profil {
   margin-top: 75px;
-  align-items: center ;
+  align-items: center;
 }
 
-
 .my-page {
-  background-image: url('../assets/loginScreen.png'); 
-  background-size: cover; 
-  background-position: center; 
-  height: 100vh; 
+  background-image: url('../assets/loginScreen.png');
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
 }
 </style>
