@@ -73,25 +73,36 @@
 </style>
 
 <script setup>
-import { computed, ref } from 'vue'
+import { computed, ref, onMounted } from 'vue'
 import { useAuthStore } from 'src/stores/auth'
-import users from '../../public/users.json'
+import { api } from '../boot/axios'
 
 const authStore = useAuthStore()
 const showDialog = ref(false)
 const selectedUser = ref({})
-const filter = ref('')  
+const filter = ref('')
+const users = ref([])
+
+onMounted(async () => {
+  try {
+    const response = await api.get('Mehdi/Users')
+    console.log(response.data)
+    users.value = response.data
+  } catch (error) {
+    console.error('Erreur lors du chargement des utilisateurs:', error)
+  }
+})
 
 const filteredUsers = computed(() => {
-  const userInfo = users.find(user => user.id === authStore.user.id)
+  const userInfo = users.value.find(user => user.id === authStore.user.id)
   if (!userInfo) return []
 
   let result = []
 
   if (userInfo.role === 'manager') {
-    result = users.filter(user => userInfo.ListeNmoins1.includes(user.idEmploye))
+    result = users.value.filter(user => userInfo.ListeNmoins1.includes(user.idEmploye))
   } else if (userInfo.role === 'RH') {
-    result = users.reduce((acc, user) => userInfo.ListeManager.includes(user.idManager) ? acc.concat(user) : acc, [])
+    result = users.value.reduce((acc, user) => userInfo.ListeManager.includes(user.idManager) ? acc.concat(user) : acc, [])
   }
 
   if (filter.value) {
@@ -110,14 +121,25 @@ function onProfileClick(row) {
   showDialog.value = true
 }
 
-function submitEdit() {
-  //Rajouter la logique de PUT/PATCH une fois l'api donnée
+//fonctionne pas car on ne peut pas rajouter d'id à l'url et que lorsque je put uniquement la "selectedUser.value" ça ne fonctionne pas
+//car je n'ai pas le reste du json + mes modifs
+async function submitEdit() {
+  try {
+    await api.put('Mehdi/users', selectedUser.value)
+    showDialog.value = false
+  } catch (error) {
+    console.error('Erreur lors de la modification du profil:', error)
+  }
 }
 
-
-function deleteUser() {
-  showDialog.value = false
-  //Rajouter la logique de DELETE une fois l'api donnée
+//fonctionne pas car on peut pas rajouter d'id à l'url mais pas eu le temps de voir comment supprimer uniquement la personne intéressée
+async function deleteUser() {
+  try {
+    await api.delete('Mehdi/users/' + selectedUser.value.id)
+    showDialog.value = false
+  } catch (error) {
+    console.error('Erreur lors de la suppression du profil:', error)
+  }
 }
 
 const rows = computed(() => filteredUsers.value.map(user => ({
@@ -138,6 +160,4 @@ const columns = [
   { name: 'role', label: 'Rôle', align: 'left', field: 'role', sortable: true },
   { name: 'action', label: 'Profil', align: 'right', sortable: false },
 ]
-
-
 </script>
