@@ -1,6 +1,6 @@
 <template>
   <div class="login-background">
-    <div class="q-pa-xl absolute-center shadow-2" style="min-width: 400px; background-color: white; border-radius: 10% / 50%;">
+    <div class="login-form q-pa-xl absolute-center shadow-2">
       <div class="q-pa-md text-h4 text-weight-bolder text-center">Connexion</div>
 
       <q-form class="q-gutter-md" @submit.prevent="onSubmit">
@@ -31,6 +31,12 @@
   background-size: cover; 
   background-position: center; 
   height: 100vh; 
+}
+
+.login-form {
+  min-width: 400px;
+  background-color: white;
+  border-radius: 10% / 50%
 }
 
 </style>
