@@ -28,9 +28,10 @@
 
         <!-- dark mode -->
         <q-btn v-if="isAuthenticated" flat @click="toggleDarkMode">
-          {{ isDarkMode ? 'Mode Clair' : 'Mode Sombre' }}
+          <q-icon :name="isDarkMode ? 'mdi-weather-sunny' : 'mdi-weather-night'" />
         </q-btn>
 
+        <!-- bouton home -->
         <q-btn
           v-if="isAuthenticated"
           flat
