@@ -31,6 +31,14 @@
           {{ isDarkMode ? 'Mode Clair' : 'Mode Sombre' }}
         </q-btn>
 
+        <q-btn
+          v-if="isAuthenticated"
+          flat
+          label="On t'RH"
+          class="q-mr-md absolute-center"
+          @click="goToHome"
+        />
+
         <!-- déconnexion -->
         <q-btn
           v-if="isAuthenticated"
@@ -69,6 +77,10 @@ function logOut() {
   authStore.logOut()
   console.log('disconnected')
   router.push('/login')
+}
+
+function goToHome() {
+  router.push('/')
 }
 
 function goToManages() {
