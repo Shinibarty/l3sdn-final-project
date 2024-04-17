@@ -7,7 +7,7 @@
             <q-btn v-if="isAuthenticated" flat icon="menu">
               <q-menu fit>
                 <q-list style="min-width: 100px">
-                  <q-item v-if="canManage" clickable  @click="goToManages">
+                  <q-item v-if="canManage" clickable @click="goToManages">
                     <q-item-section>Management</q-item-section>
                   </q-item>
                   <q-separator />
@@ -22,10 +22,22 @@
               </q-menu>
             </q-btn>
           </div>
-        </div>  
+        </div>
 
-        <q-btn v-if="isAuthenticated" flat label="On t'RH" class="q-mr-md absolute-center" @click="goToHome" />
-        <q-btn v-if="isAuthenticated" flat icon="logout" class="q-mr-md absolute-right" @click="logOut" />
+        <q-btn
+          v-if="isAuthenticated"
+          flat
+          label="On t'RH"
+          class="q-mr-md absolute-center"
+          @click="goToHome"
+        />
+        <q-btn
+          v-if="isAuthenticated"
+          flat
+          icon="logout"
+          class="q-mr-md absolute-right"
+          @click="logOut"
+        />
       </q-toolbar>
     </q-header>
 
@@ -45,7 +57,9 @@ const authStore = useAuthStore()
 const isAuthenticated = computed(() => authStore.isAuthenticated)
 
 const canManage = computed(() => {
-  return isAuthenticated.value && (authStore.user.role === 'RH' || authStore.user.role === 'manager')
+  return (
+    isAuthenticated.value && (authStore.user.role === 'RH' || authStore.user.role === 'manager')
+  )
 })
 
 function logOut() {

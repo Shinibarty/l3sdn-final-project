@@ -25,20 +25,18 @@
 </template>
 
 <style scoped>
-
 .login-background {
-  background-image: url('../assets/loginScreen.png'); 
-  background-size: cover; 
-  background-position: center; 
-  height: 100vh; 
+  background-image: url('../assets/loginScreen.png');
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
 }
 
 .login-form {
   min-width: 400px;
   background-color: white;
-  border-radius: 10% / 50%
+  border-radius: 10% / 50%;
 }
-
 </style>
 
 <script setup>
