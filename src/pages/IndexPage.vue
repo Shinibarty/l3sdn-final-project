@@ -80,7 +80,6 @@ onMounted(() => {
 
 const userProfile = ref(null)
 
-// Récupérer le profil de l'utilisateur connecté
 if (authStore.isAuthenticated && authStore.user) {
   const user = users.find((u) => u.id === authStore.user.id)
   if (user) {
@@ -98,7 +97,6 @@ const isManager = computed(() => userProfile.value && userProfile.value.role ===
 
 const isRH = computed(() => userProfile.value && userProfile.value.role === 'RH')
 
-// Récupérer le nom du manager d'un utilisateur
 const getManagerNameById = (managerId) => {
   const manager = users.find((user) => user.id === managerId)
   if (manager) {
@@ -115,7 +113,6 @@ const managerName = computed(() => {
   return ''
 })
 
-// Calculer le prochain entretien à venir où l'utilisateur connecté est le manager
 const nextInterview = computed(() => {
   if (userProfile.value) {
     const userId = userProfile.value.id
@@ -138,7 +135,6 @@ const nextInterview = computed(() => {
   return null
 })
 
-// Calculer le prochain entretien à venir où l'utilisateur connecté est l'employé
 const nextPersonalInterview = computed(() => {
   if (userProfile.value) {
     const userId = userProfile.value.id
