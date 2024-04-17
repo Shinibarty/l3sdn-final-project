@@ -46,27 +46,45 @@
 
 <script setup>
 import { ref, onMounted } from 'vue'
-import { useAuthStore } from 'src/stores/auth'
-import users from '../../public/users.json'
+import { useAuthStore } from '../stores/auth'
+import { api } from '../boot/axios'
 
 const authStore = useAuthStore()
 
 const userProfile = ref({})
 
-onMounted(() => {
+onMounted(async () => {
   authStore.checkAuth()
   if (authStore.isAuthenticated && authStore.user) {
-    const user = users.find((u) => u.id === authStore.user.id)
-    if (user) {
-      userProfile.value = user
+    try {
+      const response = await api.get('/Mehdi/Users')
+      const userData = response.data.find(u => u.id === authStore.user.id)
+      if (userData) {
+        userProfile.value = userData
+        console.log('Profil de l’utilisateur connecté :', userProfile.value)
+      }
+    } catch (error) {
+      console.error('Erreur lors de la récupération des informations de l’utilisateur:', error)
     }
   }
 })
 
-function submitEdit() {
-  //Rajouter la logique de PUT/PATCH une fois l'api donnée
+//fonctionne pas
+async function submitEdit() {
+  try {
+    if (!userProfile.value || !userProfile.value.id) {
+      console.error('Aucune information d’utilisateur à mettre à jour.')
+      return
+    }
+    const response = await api.put('/Mehdi/Users/' + userProfile.value.id, userProfile.value)
+    console.log('Profil mis à jour :', response.data)
+  } catch (error) {
+    console.error('Erreur lors de la mise à jour du profil:', error)
+  }
 }
 </script>
+
+
 
 <style scoped>
 .my-profil {
