@@ -1,7 +1,9 @@
 <template>
   <q-layout view="lHh Lpr lFf">
+    <!-- Header -->
     <q-header elevated>
       <q-toolbar>
+        <!-- Menu hamburger -->
         <div class="q-pa-md">
           <div class="q-gutter-md">
             <q-btn v-if="isAuthenticated" flat icon="menu">
@@ -24,13 +26,12 @@
           </div>
         </div>
 
-        <q-btn
-          v-if="isAuthenticated"
-          flat
-          label="On t'RH"
-          class="q-mr-md absolute-center"
-          @click="goToHome"
-        />
+        <!-- dark mode -->
+        <q-btn v-if="isAuthenticated" flat @click="toggleDarkMode">
+          {{ isDarkMode ? 'Mode Clair' : 'Mode Sombre' }}
+        </q-btn>
+
+        <!-- déconnexion -->
         <q-btn
           v-if="isAuthenticated"
           flat
@@ -51,10 +52,12 @@
 import { useAuthStore } from 'src/stores/auth'
 import { useRouter } from 'vue-router'
 import { computed } from 'vue'
+import { Dark } from 'quasar'
 
 const router = useRouter()
 const authStore = useAuthStore()
 const isAuthenticated = computed(() => authStore.isAuthenticated)
+const isDarkMode = computed(() => Dark.isActive)
 
 const canManage = computed(() => {
   return (
@@ -68,10 +71,6 @@ function logOut() {
   router.push('/login')
 }
 
-function goToHome() {
-  router.push('/')
-}
-
 function goToManages() {
   router.push('/manages')
 }
@@ -82,5 +81,9 @@ function goToInterviews() {
 
 function profil() {
   router.push('/profil')
+}
+
+function toggleDarkMode() {
+  Dark.toggle()
 }
 </script>
