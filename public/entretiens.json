@@ -5,7 +5,10 @@
         "employeeId": 2,
         "date": "2024-01-15",
         "notes": "Entretien de suivi trimestriel.",
-        "status": "completed"
+        "status": "completed",
+        "travailEffectue": "blabla",
+        "objectifs": "blabla",
+        "objectifsAnneePro": "blabla"
     },
     {
         "id": 2,
@@ -13,7 +16,10 @@
         "employeeId": 3,
         "date": "2024-02-10",
         "notes": "Entretien d'évaluation annuelle.",
-        "status": "pending"
+        "status": "pending",
+        "travailEffectue": "blabla",
+        "objectifs": "blabla",
+        "objectifsAnneePro": "blabla"
     },
     {
         "id": 3,
@@ -29,7 +35,10 @@
         "employeeId": 3,
         "date": "2024-04-16",
         "notes": "Entretien de suivi mensuel.",
-        "status": "pending"
+        "status": "pending",
+        "travailEffectue": "blabla",
+        "objectifs": "blabla",
+        "objectifsAnneePro": "blabla"
     },
     {
         "id": 5,
@@ -37,7 +46,10 @@
         "employeeId": 4,
         "date": "2024-05-16",
         "notes": "Entretien d'évaluation trimestriel.",
-        "status": "pending"
+        "status": "pending",
+        "travailEffectue": "blabla",
+        "objectifs": "blabla",
+        "objectifsAnneePro": "blabla"
     },
     {
         "id": 6,
@@ -45,7 +57,10 @@
         "employeeId": 5,
         "date": "2024-06-16",
         "notes": "Entretien de suivi mensuel.",
-        "status": "pending"
+        "status": "pending",
+        "travailEffectue": "blabla",
+        "objectifs": "blabla",
+        "objectifsAnneePro": "blabla"
     },
     {
         "id": 7,
@@ -53,7 +68,10 @@
         "employeeId": 6,
         "date": "2024-07-16",
         "notes": "Entretien de performance trimestriel.",
-        "status": "pending"
+        "status": "pending",
+        "travailEffectue": "blabla",
+        "objectifs": "blabla",
+        "objectifsAnneePro": "blabla"
     },
     {
         "id": 8,
@@ -61,7 +79,10 @@
         "employeeId": 1,
         "date": "2024-08-16",
         "notes": "Entretien entre RH et Manager.",
-        "status": "pending"
+        "status": "pending",
+        "travailEffectue": "blabla",
+        "objectifs": "blabla",
+        "objectifsAnneePro": "blabla"
     },
     {
         "id": 9,
@@ -69,7 +90,10 @@
         "employeeId": 1,
         "date": "2024-08-16",
         "notes": "Entretien fini interviewé test.",
-        "status": "completed"
+        "status": "completed",
+        "travailEffectue": "blabla",
+        "objectifs": "blabla",
+        "objectifsAnneePro": "blabla"
     }   
 ]
   

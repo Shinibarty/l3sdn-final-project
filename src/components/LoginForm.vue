@@ -34,7 +34,11 @@
 
 .login-form {
   min-width: 400px;
-  background-color: rgb(159, 79, 79);
+  background-color: rgb(
+    159,
+    79,
+    79
+  ); /* couleur fixe sinon l'image prend le dessus sur le fond du form et on ne voit plus les bords */
   border-radius: 10% / 50%;
 }
 </style>
