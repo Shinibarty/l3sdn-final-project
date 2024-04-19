@@ -121,7 +121,7 @@ function onProfileClick(row) {
   showDialog.value = true
 }
 
-//fonctionne pas car on ne peut pas rajouter d'id à l'url et que lorsque je put uniquement la "selectedUser.value" ça ne fonctionne pas
+//fonctionne pas car on n e peut pas rajouter d'id à l'url et que lorsque je put uniquement la "selectedUser.value" ça ne fonctionne pas
 //car je n'ai pas le reste du json + mes modifs
 async function submitEdit() {
   try {

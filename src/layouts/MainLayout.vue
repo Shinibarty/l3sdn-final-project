@@ -76,7 +76,6 @@ const canManage = computed(() => {
 
 function logOut() {
   authStore.logOut()
-  console.log('disconnected')
   router.push('/login')
 }
 
